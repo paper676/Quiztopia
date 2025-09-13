@@ -3,7 +3,10 @@ const cors=require('cors');
 
 const port = process.env.PORT || 3000;
 
-const AllowedOrigins=['http://localhost:5173','https://quiztopia-seven.vercel.app/login']
+const AllowedOrigins = [
+  "http://localhost:5173",
+  "https://quiztopia-seven.vercel.app"
+];
 
 const express=require('express');
 const app=express();
@@ -19,7 +22,12 @@ const UserManageRouter = require("./routes/UserManage");
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
-app.use(cors({origin:AllowedOrigins,credentials:true}));
+app.use(cors({
+  origin: AllowedOrigins,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(cookieParser());
 
 connectToDb()
