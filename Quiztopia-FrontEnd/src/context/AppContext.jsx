@@ -7,12 +7,12 @@ import axios from 'axios'
 
 export const AppContext = createContext();
 
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL; // adjust backend port
+axios.defaults.withCredentials = true;
+
 const AppContextProvider = ({ children }) => {
 
     const navigate = useNavigate();
-
-    axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL; // adjust backend port
-    axios.defaults.withCredentials = true;
 
     const [user, setUser] = useState(null);
     const [isUser, setIsUser] = useState(false);
@@ -76,7 +76,7 @@ const AppContextProvider = ({ children }) => {
         fetchPreviousQuizes();
         fetchSavedQuizes();
         fetchUserProgrss();
-    }, []);
+    }, [user]);
 
     const value = {
         navigate,
