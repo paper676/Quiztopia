@@ -7,7 +7,7 @@ import Faqs from './Faqs'
 function LandingMidPart() {
     return (
         <div>
-            <div class="bg-white py-24 sm:py-32">
+            <div class="bg-white py-24 sm:py-32 ">
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div className='w-full h-[25rem] flex flex-col jistify-center items-center mb-5'>
                         <div class="mx-auto max-w-2xl lg:max-w-3xl lg:text-center">
