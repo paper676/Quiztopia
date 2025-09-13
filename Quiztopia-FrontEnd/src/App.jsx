@@ -17,17 +17,35 @@ import QuizResult from './pages/UserPages/QuizCompletion'
 import ProfilePage from './components/ProfilePage'
 import HelpPage from './components/HelpPage'
 
+function ProtectedRoute({ children }) {
+  const { isUser, loading } = UseAppContext();
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="p-6 rounded-xl bg-white shadow-lg flex items-center space-x-3">
+          <div className="w-6 h-6 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-gray-700 font-medium">Checking authentication...</p>
+        </div>
+      </div>
+    );
+  }
+
+  return isUser ? children : <Login />;
+}
+
 function App() {
   const { isUser } = UseAppContext();
   return (
     <div>
-      {isUser && <Toaster />}
+      {/* {isUser && <Toaster />} */}
+      <Toaster />
       <Routes>
         <Route path='/' element={<LandingPage/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
-        <Route path='/profile' element={isUser?<ProfilePage/>:<Login/>}></Route>
-        <Route path='/user' element={isUser?<FixedStructure/>:<Login/>}>
-          <Route index element={isUser ?<UserDashBoard/>:null}></Route>
+        <Route path='/profile' element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}></Route>
+        <Route path='/user' element={<ProtectedRoute><FixedStructure/></ProtectedRoute>}>
+          <Route index element={<ProtectedRoute><UserDashBoard/></ProtectedRoute>}></Route>
           <Route path='create' element={<CreateQuiz/>}>
             <Route index element={<SelectQuiz/>}></Route>
             <Route path='quiz' element={<QuizSection/>}></Route>

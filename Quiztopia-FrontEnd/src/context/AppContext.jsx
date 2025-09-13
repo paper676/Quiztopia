@@ -21,6 +21,7 @@ const AppContextProvider = ({ children }) => {
     const [userProgress, setUserProgress] = useState(null);
     const [currentQuiz,setCurrentQuiz] = useState(null);
     const [submitedQuiz,setSubmitedQuiz] = useState(null);
+    const [loading, setLoading] = useState(true); 
 
     //fetch user status
     const fetchUser = async () => {
@@ -35,6 +36,8 @@ const AppContextProvider = ({ children }) => {
         } catch (error) {
             setUser(null);
             setIsUser(false);
+        } finally {
+           setLoading(false);
         }
     }
     //fetch Previous Quizes
@@ -45,8 +48,8 @@ const AppContextProvider = ({ children }) => {
                 setPreviousQuizzes(data.quizzes);
             }
         } catch (err) {
-            toast.error("Could not fetch Recent quizzes");
-        }
+            console.log("Could not fetch Recent quizzes");
+        } 
     }
     //fetch Saved Quizes
     const fetchSavedQuizes = async () => {
@@ -76,9 +79,10 @@ const AppContextProvider = ({ children }) => {
         fetchPreviousQuizes();
         fetchSavedQuizes();
         fetchUserProgrss();
-    }, [user]);
+    }, []);
 
     const value = {
+        loading,
         navigate,
         axios,
         user,
