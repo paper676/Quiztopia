@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import RecentCardDashboard from '../../components/RecentCardDashboard'
-import ChartA from './chartA'
 import StactCard from './StactCard'
 
 import { Plus, Save, ChartBar } from 'lucide-react'

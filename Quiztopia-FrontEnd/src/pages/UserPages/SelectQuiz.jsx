@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Sparkles } from "lucide-react"; // AI sparkle icon
-import { useNavigate } from "react-router-dom";
+import { Sparkles } from "lucide-react";
 import { UseAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
 

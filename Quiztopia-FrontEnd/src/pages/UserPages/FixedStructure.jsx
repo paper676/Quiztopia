@@ -3,7 +3,6 @@ import AppLogo from '../../assets/AppLogo.png'
 import { Outlet } from 'react-router-dom'
 import { CircleUser, SquarePen, LayoutDashboard, History, LogOut, Info, UserRoundPen, Save } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
-// import { Toaster } from 'react-hot-toast';
 
 import toast from 'react-hot-toast';
 import { UseAppContext } from '../../context/AppContext';

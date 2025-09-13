@@ -11,7 +11,7 @@ const AppContextProvider = ({ children }) => {
 
     const navigate = useNavigate();
 
-    axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL; // adjust to your backend port
+    axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL; // adjust backend port
     axios.defaults.withCredentials = true;
 
     const [user, setUser] = useState(null);
