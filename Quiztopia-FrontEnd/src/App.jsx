@@ -45,7 +45,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/profile' element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}></Route>
         <Route path='/user' element={<ProtectedRoute><FixedStructure/></ProtectedRoute>}>
-          <Route index element={<ProtectedRoute><UserDashBoard/></ProtectedRoute>}></Route>
+          <Route index element={<UserDashBoard/>}></Route>
           <Route path='create' element={<CreateQuiz/>}>
             <Route index element={<SelectQuiz/>}></Route>
             <Route path='quiz' element={<QuizSection/>}></Route>
