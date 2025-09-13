@@ -1,6 +1,7 @@
 const QuizModel = require("../models/QuizModel");
 const UserModel = require("../models/UserModel");
-
+const bcrypt=require('bcrypt');
+const jwt=require('jsonwebtoken')
 
 //Update name and password : /api/userManage/update
 module.exports.updateProfile=async (req,res)=>{
