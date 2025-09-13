@@ -27,6 +27,7 @@ module.exports.register=async(req,res)=>{
             sameSite:'none',
             maxAge:6*60*60*1000
         })
+        console.log("Set-Cookie header:", res.getHeaders()["set-cookie"]);
         return res.status(200).json({success:true,user:{email:user.email,name:user.name}})
     } catch (error) {
         console.log(error.message);
@@ -56,7 +57,7 @@ module.exports.login = async (req,res)=>{
             sameSite: 'none' ,
             maxAge:6*60*60*1000
         })
-
+        console.log("Set-Cookie header:", res.getHeaders()["set-cookie"]);
         return res.json({success:true,user:{email:user.email,name:user.name}})
     }catch(error){
         console.log(error.message);
