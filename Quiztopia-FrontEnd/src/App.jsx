@@ -8,7 +8,7 @@ import CreateQuiz from './pages/UserPages/CreateQuiz'
 import FixedStructure from './pages/UserPages/FixedStructure'
 import PreviousQuizes from './pages/UserPages/PreviousQuizes'
 import SavedQuizes from './pages/UserPages/SavedQuizes'
-import QuizSection from './pages/UserPages/quizSection'
+import QuizSection from './pages/UserPages/QuizSection'
 import SelectQuiz from './pages/UserPages/SelectQuiz'
 
 import { Toaster } from 'react-hot-toast';
