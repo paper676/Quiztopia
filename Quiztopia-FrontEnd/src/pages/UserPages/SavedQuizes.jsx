@@ -38,7 +38,7 @@ function SavedQuizes() {
   }, [previousQuizzes, savedQuizzes])
 
   return (
-    <div className="p-10 w-full no-scrollbar flex-1 h-[89vh] overflow-y-scroll bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div className="lg:p-10 md:p-5 sm:p-2 w-full no-scrollbar flex-1 h-[89vh] overflow-y-scroll bg-gradient-to-br from-indigo-50 via-white to-purple-50">
       <div className="max-w-4xl mx-auto bg-white p-6 rounded-[8px] shadow-sm border border-gray-200">
         <h2 className="text-2xl font-bold text-indigo-700 mb-4">Saved Quizzes</h2>
         {quizzes.length > 0 ? (
@@ -49,7 +49,7 @@ function SavedQuizes() {
                   key={quiz._id}
                   className="flex justify-between items-center p-4 mb-3 bg-white rounded-md shadow hover:shadow-md transition"
                 >
-                  <div>
+                  <div className='sm:text-sm'>
                     <p className="text-lg font-semibold text-gray-800">{quiz.topic}</p>
                     <div className="flex items-center gap-3 mt-1 text-sm text-gray-500">
                       <span
@@ -67,7 +67,7 @@ function SavedQuizes() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center md:gap-4 sm:gap-3">
                     {/* <button
                       title="Play Quiz"
                       className="p-2 rounded-full hover:bg-green-50 text-green-500 hover:text-green-700 transition"

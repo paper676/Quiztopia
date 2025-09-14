@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { Trash2, LogOut } from "lucide-react";
+import { Trash2, LogOut,ArrowLeft  } from "lucide-react";
 import { UseAppContext } from "../context/AppContext";
+import { Link } from "react-router-dom";
 
 function ProfilePage() {
   const { user, setUser, axios, previousQuizzes, savedQuizzes, navigate,setIsUser} = UseAppContext();
@@ -58,9 +59,11 @@ function ProfilePage() {
   return (
     <div className="w-full min-h-screen p-6 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
       <div className="max-w-4xl mx-auto bg-white p-6 rounded-[8px] shadow-sm space-y-6">
-
+        <div className="flex flex-row items-center">
+          <Link to='/user' className="hover:scale-105 p-1 rounded-full transition hover:bg-zinc-100"><ArrowLeft size={18}/></Link>
+          <p className='ml-1 text-sm text-black-600'>Dashboard</p>
+        </div>
         <h1 className="text-3xl font-medium text-indigo-600">Profile Page</h1>
-
         <div className="space-y-2">
           <h2 className="text-xl font-semibold text-gray-600">User Info</h2>
           <div className="flex flex-col md:flex-row gap-4 md:items-center">

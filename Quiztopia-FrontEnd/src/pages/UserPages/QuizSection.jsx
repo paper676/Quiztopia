@@ -131,7 +131,7 @@ function QuizSection() {
         <div>
             <div className='w-full no-scrollbar flex-1 h-[89vh] overflow-y-scroll'>
                 {/* <TimeBar /> */}
-                <div className="p-20 space-y-4 pt-4">
+                <div className="lg:p-20 md:15 sm:p-5 space-y-4 pt-4">
                     {quiz.map((q, i) => (
                         <div key={i} className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
                             <p className="font-medium text-gray-800">{i + 1}. {q.question}</p>

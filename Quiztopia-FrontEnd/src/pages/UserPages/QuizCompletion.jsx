@@ -50,7 +50,7 @@ function QuizResult() {
             <button
               className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg shadow transition"
             >
-              <RotateCcw size={18} /> Generate New quiz
+              <RotateCcw size={18} /><p>New quiz</p>
             </button>
           </Link>
           <Link to='/user'>
@@ -62,7 +62,7 @@ function QuizResult() {
           </Link>
         </div>
 
-        <div className="p-20 mt-10 space-y-4 pt-4">
+        <div className="lg:p-20 md:15 sm:p-5 space-y-4 py-4">
           {submitedQuiz.questions.map((q, i) => {
             const correctness = submitedQuiz.correctAnswers.find(c => c.questionIndex === i);
 

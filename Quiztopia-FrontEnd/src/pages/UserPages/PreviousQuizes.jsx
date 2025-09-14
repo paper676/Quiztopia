@@ -57,7 +57,7 @@ export default function PreviousQuizes() {
 
   return (
     <div>
-      <div className="p-10 w-full no-scrollbar flex-1 h-[89vh] overflow-y-scroll bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="lg:p-10 md:p-5 sm:p-2 w-full no-scrollbar flex-1 h-[89vh] overflow-y-scroll bg-gradient-to-br from-indigo-50 via-white to-purple-50">
         <div className="max-w-4xl mx-auto bg-white p-6 rounded-[8px] shadow-sm border border-gray-200">
           <h2 className="text-2xl font-bold text-indigo-700 mb-4">Previous Quizzes</h2>
           {quizzes.length > 0 ? (
@@ -65,11 +65,11 @@ export default function PreviousQuizes() {
               {quizzes.map((quiz) => (
                 <div
                   key={quiz._id}
-                  className="flex justify-between items-center p-4 mb-3 bg-white rounded-md shadow hover:shadow-md transition"
+                  className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-4 bg-white rounded-md shadow hover:shadow-md transition"
                 >
-                  <div>
+                  <div className='sm:text-sm'>
                     <p className="text-lg font-semibold text-gray-800">{quiz.topic}</p>
-                    <div className="flex items-center gap-3 mt-1 text-sm text-gray-500">
+                    <div className="flex items-center gap-3 mt-1 text-sm text-gray-500 truncate">
                       <span
                         className={`px-2 py-0.5 rounded-full text-xs font-medium ${quiz.difficulty === "Easy"
                           ? "bg-green-100 text-green-600"
@@ -85,7 +85,7 @@ export default function PreviousQuizes() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center lg:gap-4 md:gap-3 sm:gap-2 sm:text-sm">
                     <span className="text-indigo-600 font-semibold">
                       {quiz.score} / {quiz.totalQuestions}
                     </span>

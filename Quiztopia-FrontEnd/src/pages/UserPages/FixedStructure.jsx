@@ -9,6 +9,8 @@ import { UseAppContext } from '../../context/AppContext';
 
 function FixedStructure() {
     const { setUser, navigate, axios,setIsUser } = UseAppContext();
+    const [open,setOpen]=useState(false);
+    const toggle=()=>setOpen(!open);
     const logout = async () => {
         try {
             const { data } = await axios.get('/api/user/logout');
@@ -33,30 +35,33 @@ function FixedStructure() {
 
     return (
         <div className="min-h-screen flex flex-col">
-            {/* <Toaster/> */}
             <div className="flex items-center justify-between px-4 md:px-8 border-b border-gray-300 py-3 bg-white">
                 <Link to='/'>
                     <img className="h-12 mx-5" src={AppLogo} alt="dummyLogoColored" />
                 </Link>
                 
-                <div className="relative group cursor-pointer mx-10">
-                    <CircleUser size={32} className="text-4xl text-indigo-900 font-bold" />
-                    <ul className="hidden group-hover:block absolute top-6 right-0 bg-white shadow-md border border-gray-200 w-45 rounded-md z-40 text-sm">
-                        <Link to='/profile'><li className="px-4 py-2 hover:bg-zinc-200 cursor-pointer flex flex-row items-center">
-                            <UserRoundPen size={15} />
-                            <p className='px-1'>Profile</p>
-                        </li></Link>
-                        <hr className='text-zinc-200' />
-                        <Link to='/help'><li className="px-4 py-2 hover:bg-zinc-200 cursor-pointer flex flex-row items-center">
-                            <Info size={15} />
-                            <p className='px-1'>Help</p>
-                        </li></Link>
-                        <hr className='text-zinc-200' />
-                        <li onClick={logout} className="px-4 py-2 text-red-400 hover:bg-zinc-200 cursor-pointer flex flex-row items-center">
-                            <LogOut size={15} />
-                            <p className='px-1'>Logout</p>
-                        </li>
-                    </ul>
+                <div className="relative cursor-pointer mx-10">
+                    <div onClick={toggle}>
+                        <CircleUser size={32} className="text-4xl text-indigo-900 font-bold" />
+                    </div>
+                    { open && (
+                        <ul className="absolute top-6 right-0 bg-white shadow-md border border-gray-200 w-45 rounded-md z-40 text-sm">
+                            <Link to='/profile'><li className="px-4 py-2 hover:bg-zinc-200 cursor-pointer flex flex-row items-center">
+                                <UserRoundPen size={15} />
+                                <p className='px-1'>Profile</p>
+                            </li></Link>
+                            <hr className='text-zinc-200' />
+                            <Link to='/help'><li className="px-4 py-2 hover:bg-zinc-200 cursor-pointer flex flex-row items-center">
+                                <Info size={15} />
+                                <p className='px-1'>Help</p>
+                            </li></Link>
+                            <hr className='text-zinc-200' />
+                            <li onClick={logout} className="px-4 py-2 text-red-400 hover:bg-zinc-200 cursor-pointer flex flex-row items-center">
+                                <LogOut size={15} />
+                                <p className='px-1'>Logout</p>
+                            </li>
+                        </ul>
+                    )}
                 </div>
             </div>
             <div className='flex flex-1 h-[89vh] overflow-hidden'>

@@ -34,8 +34,8 @@ function LandinNavbar() {
 
             {/* Mobile Menu */}
             <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
-                <NavLink to='/' onClick={()=>setOpen(false)}>AboutUS</NavLink>
-                <NavLink to='/' onClick={()=>setOpen(false)}>Contact</NavLink>
+                <NavLink to='/help' onClick={()=>setOpen(false)}>AboutUS</NavLink>
+                <NavLink to='/help' onClick={()=>setOpen(false)}>Contact</NavLink>
                 <NavLink to='/login'>
                     <button className="cursor-pointer px-6 py-2 mt-2 bg-indigo-500 hover:bg-indigo-100 transition text-white rounded-full text-sm">
                         Login

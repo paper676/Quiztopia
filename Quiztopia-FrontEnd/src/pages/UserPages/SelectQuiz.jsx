@@ -41,7 +41,7 @@ function SelectQuiz() {
 
           <div className="flex items-center gap-3">
             <Sparkles size={28} className="text-indigo-800 animate-pulse" />
-            <h1 className="text-3xl font-bold text-indigo-900">Generate AI Quiz</h1>
+            <h1 className="text-3xl font-bold text-indigo-900">Generate Quiz</h1>
           </div>
           <p className="ml-2 text-gray-600 font-medium text-sm">Let AI create a great quiz for you - just give it a few instructions!</p>
 

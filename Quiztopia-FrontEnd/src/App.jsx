@@ -25,7 +25,7 @@ function ProtectedRoute({ children }) {
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="p-6 rounded-xl bg-white shadow-lg flex items-center space-x-3">
           <div className="w-6 h-6 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-          <p className="text-gray-700 font-medium">Checking authentication...</p>
+          {/* <p className="text-gray-700 font-medium">Checking authentication...</p> */}
         </div>
       </div>
     );

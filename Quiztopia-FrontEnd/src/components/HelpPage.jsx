@@ -1,11 +1,15 @@
 import React from "react";
-import { HelpCircle, Mail, Phone } from "lucide-react";
+import { HelpCircle, Mail, Phone,ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function HelpPage() {
   return (
-    <div className="w-full flex-1 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div className="lg:p-5 sm:p-8 w-full flex-1 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
       <div className="max-w-3xl mx-auto p-6 space-y-6">
-        
+        <div className="flex flex-row items-center">
+          <Link to='/' className="hover:scale-105 p-1 rounded-full transition hover:bg-zinc-100"><ArrowLeft size={18}/></Link>
+          <p className='ml-1 text-sm text-black-600'>Home</p>
+        </div>
         <div className="flex items-center gap-3">
           <HelpCircle size={28} className="text-indigo-700" />
           <h1 className="text-3xl font-bold text-indigo-900">Help & Support</h1>

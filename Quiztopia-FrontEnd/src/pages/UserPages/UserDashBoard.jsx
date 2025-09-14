@@ -22,13 +22,13 @@ function UserDashBoard() {
 
   return (
     <div className='p-10 w-full no-scrollbar flex-1 h-[89vh] overflow-y-scroll'>
-      <h1 className='text-5xl font-medium'>Welcome Back,<span className='font-light'>{user?.name || "User"}</span></h1>
+      <h1 className='lg:text-5xl md:text-4xl sm:text-3xl font-medium'>Welcome Back,<span className='font-light'>{user?.name || "User"}</span></h1>
       <div className='mt-5'>
-        <p className='text-zinc-700 text-[15px] font-[25px]'>Recent Activity :</p>
+        <p className='text-zinc-700 text-sm sm:text-base md:text-lg font-semibold'>Recent Activity :</p>
         <hr className='my-3 text-zinc-200 rounded-md' />
         <div className='my-5'>
           {recentQuizzes.length > 0 ? (
-            <div className="grid grid-cols-1 gap-2 lg:grid-cols-3 lg:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {recentQuizzes.map(q => (
                 <RecentCardDashboard key={q._id} quiz={q} />
               ))}

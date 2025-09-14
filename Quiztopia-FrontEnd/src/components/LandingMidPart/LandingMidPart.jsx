@@ -3,24 +3,25 @@ import ButtonCompo from './ButtonCompo'
 import { Link } from 'react-router-dom'
 import Testimonial from './Testimonial'
 import Faqs from './Faqs'
+import bgImage from '../../assets/bg.jpg'
 
 function LandingMidPart() {
     return (
         <div>
-            <div class="bg-white py-24 sm:py-32 ">
+            <div class="bg-white py-24 sm:py-32">
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className='w-full h-[25rem] flex flex-col jistify-center items-center mb-5'>
+                    <div className='w-full min-h-[20rem] flex flex-col justify-center items-center text-center mb-10 bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${bgImage})` }}>
                         <div class="mx-auto max-w-2xl lg:max-w-3xl lg:text-center">
                             <h2 class="text-base/7 font-semibold text-zinc-600">Ready to Quiz Smarter?</h2>
-                            <p class="mt-2 text-6xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-6xl lg:text-balance">Create Custom Quizzes in <span className='text-indigo-900'>Seconds</span></p>
-                            <p class="mt-6 text-lg/8 text-gray-700">Our intelligent AI instantly generates engaging and accurate quizzes from any topic or piece of text. Stop spending hours writing questions and start learning faster.</p>
+                            <p class="mt-3 text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight">Create Custom Quizzes in <span className='text-indigo-900'>Seconds</span></p>
+                            <p class="mt-6 lg:text-lg/8 text-gray-700">Our intelligent AI instantly generates engaging and accurate quizzes from any topic or piece of text. Stop spending hours writing questions and start learning faster.</p>
                         </div>
-                        <div className='w-full pt-5 h-20 flex justify-center items-center'>
+                        <div className='w-full pt-6 flex justify-center'>
                             <Link to="/login"><ButtonCompo /></Link>
                         </div>
                     </div>
                     <div class="mx-auto mt-16 max-w-3xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-                        <dl class="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-15 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                        <dl class="grid grid-cols-1 gap-8 sm:gap-10 lg:grid-cols-2">
                             <div class="relative pl-16 border border-gray-300 p-4 rounded-md">
                                 <dt class="text-base/7 font-semibold text-gray-900">
                                     <div class="absolute top-13 left-0 flex size-10 items-center justify-center rounded-lg bg-indigo-600 m-3">
