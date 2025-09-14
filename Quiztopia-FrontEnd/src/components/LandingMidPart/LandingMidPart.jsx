@@ -9,8 +9,8 @@ function LandingMidPart() {
     return (
         <div>
             <div class="bg-white py-24 sm:py-32">
-                <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div className='w-full min-h-[20rem] flex flex-col justify-center items-center text-center mb-10 bg-cover bg-center bg-no-repeat' style={{ backgroundImage: `url(${bgImage})` }}>
+                <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+                    <div className='w-full min-h-[20rem] flex flex-col justify-center items-center text-center mb-10 bg-cover bg-center bg-no-repeat rounded-md' style={{ backgroundImage: `url(${bgImage})` }}>
                         <div class="mx-auto max-w-2xl lg:max-w-3xl lg:text-center">
                             <h2 class="text-base/7 font-semibold text-zinc-600">Ready to Quiz Smarter?</h2>
                             <p class="mt-3 text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight">Create Custom Quizzes in <span className='text-indigo-900'>Seconds</span></p>
