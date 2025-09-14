@@ -65,7 +65,7 @@ export default function PreviousQuizes() {
               {quizzes.map((quiz) => (
                 <div
                   key={quiz._id}
-                  className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-4 bg-white rounded-md shadow hover:shadow-md transition"
+                  className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 p-4 bg-white rounded-md shadow hover:shadow-md transition md:mt-3 sm:mt-5"
                 >
                   <div className='sm:text-sm'>
                     <p className="text-lg font-semibold text-gray-800">{quiz.topic}</p>
