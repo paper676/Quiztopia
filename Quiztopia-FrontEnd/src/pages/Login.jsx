@@ -31,7 +31,7 @@ function Login() {
         }
     }, [isUser]);
     return !user  && (
-        <div className='w-full p-25 flex justify-center align-center'>
+        <div className='w-full lg:p-25 md:p-20 sm:p-5 flex justify-center align-center'>
             <form onSubmit={onSubmitHandler} className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-90 sm:w-[352px] rounded-lg shadow-xl border border-gray-200 bg-white">
                 <p className="text-2xl font-medium m-auto">
                     <span className="text-indigo-500"></span> {state === "login" ? "Login" : "Sign Up"}
