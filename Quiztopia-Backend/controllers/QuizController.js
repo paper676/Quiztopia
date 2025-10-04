@@ -13,7 +13,7 @@ module.exports.generate = async (req, res) => {
     try {
         const { topic, difficulty = "Easy", numQuestions = 5, extraInstructions = "" } = req.body;
         if (!topic || !difficulty) {
-            return res.status(400).json({ success: false, message: "Topic and difficulty are required", });
+            return res.status(400).json({ success: false, message: "Topic and difficulty are required" });
         }
         const prompt = `
             Generate ${numQuestions} multiple-choice quiz questions on "${topic}" 

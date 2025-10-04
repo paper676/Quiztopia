@@ -9,7 +9,7 @@ import { UseAppContext } from '../../context/AppContext'
 
 
 function UserDashBoard() {
-  const { user,previousQuizzes,userProgress } = UseAppContext();
+  const { user, previousQuizzes, userProgress } = UseAppContext();
   const [recentQuizzes, setRecentQuizzes] = useState([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function UserDashBoard() {
                 <RecentCardDashboard key={q._id} quiz={q} />
               ))}
             </div>
-          ):(
+          ) : (
             <div className='flex justify-center text-sm h-[4rem]'>
               <p className="text-gray-500 italic">No recent quizzes yet</p>
             </div>
@@ -58,9 +58,9 @@ function UserDashBoard() {
         <div className="p-6 bg-gray-50 rounded-xl shadow my-10">
           <p className='text-zinc-700 text-[20px] font-medium flex flex-row items-center'><ChartBar size={25} className='mr-2' /> Progress</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
-            <StactCard label="Total Quizzes Taken" value={`${userProgress.totalQuizes}`} />
-            <StactCard label="Average Score" value={`${userProgress.avgScore}`} />
-            <StactCard label="Total Time Spent" value={`${Math.ceil(userProgress.totalTimeSpent / 60)}min`} />
+            <StactCard label="Total Quizzes Taken" value={`${userProgress?.totalQuizes ?? 0}`} />
+            <StactCard label="Average Score" value={`${userProgress?.avgScore ?? 0}`} />
+            <StactCard label="Total Time Spent" value={`${userProgress ? Math.ceil(userProgress.totalTimeSpent / 60) : 0} min`} />
           </div>
           {/* <ChartA/> */}
         </div>
