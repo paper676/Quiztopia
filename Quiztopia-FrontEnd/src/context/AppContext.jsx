@@ -19,9 +19,9 @@ const AppContextProvider = ({ children }) => {
     const [previousQuizzes, setPreviousQuizzes] = useState([]);
     const [savedQuizzes, setSavedQuizzes] = useState([]);
     const [userProgress, setUserProgress] = useState(null);
-    const [currentQuiz,setCurrentQuiz] = useState(null);
-    const [submitedQuiz,setSubmitedQuiz] = useState(null);
-    const [loading, setLoading] = useState(true); 
+    const [currentQuiz, setCurrentQuiz] = useState(null);
+    const [submitedQuiz, setSubmitedQuiz] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     //fetch user status
     const fetchUser = async () => {
@@ -37,7 +37,7 @@ const AppContextProvider = ({ children }) => {
             setUser(null);
             setIsUser(false);
         } finally {
-           setLoading(false);
+            setLoading(false);
         }
     }
     //fetch Previous Quizes
@@ -49,7 +49,7 @@ const AppContextProvider = ({ children }) => {
             }
         } catch (err) {
             console.log("Could not fetch Recent quizzes");
-        } 
+        }
     }
     //fetch Saved Quizes
     const fetchSavedQuizes = async () => {
@@ -63,7 +63,7 @@ const AppContextProvider = ({ children }) => {
         }
     }
     //fettch userProgress
-    const fetchUserProgrss=async () => {
+    const fetchUserProgrss = async () => {
         try {
             const { data } = await axios.get('/api/quizManage/progress');
             if (data.success) {
@@ -73,13 +73,23 @@ const AppContextProvider = ({ children }) => {
             toast.error("Could not fetch User Progress");
         }
     }
-
     useEffect(() => {
         fetchUser();
-        fetchPreviousQuizes();
-        fetchSavedQuizes();
-        fetchUserProgrss();
     }, []);
+
+    useEffect(() => {
+        if (isUser) {
+            fetchPreviousQuizes();
+            fetchSavedQuizes();
+            fetchUserProgrss();
+        }
+    }, [isUser]);
+    // useEffect(() => {
+    //     fetchUser();
+    //     fetchPreviousQuizes();
+    //     fetchSavedQuizes();
+    //     fetchUserProgrss();
+    // }, []);
 
     const value = {
         loading,
