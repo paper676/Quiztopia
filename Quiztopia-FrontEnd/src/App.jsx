@@ -10,6 +10,7 @@ import PreviousQuizes from './pages/UserPages/PreviousQuizes'
 import SavedQuizes from './pages/UserPages/SavedQuizes'
 import QuizSection from './pages/UserPages/QuizSection'
 import SelectQuiz from './pages/UserPages/SelectQuiz'
+import UploadFile from './pages/UserPages/UploadFile'
 
 import { Toaster } from 'react-hot-toast';
 import { UseAppContext } from './context/AppContext';
@@ -51,6 +52,7 @@ function App() {
             <Route path='quiz' element={<QuizSection/>}></Route>
             <Route path='score' element={<QuizResult/>}></Route>
           </Route>
+          <Route path='upload' element={<UploadFile/>}></Route>
           <Route path='previous' element={<PreviousQuizes/>}></Route>
           <Route path='saved-quizes' element={<SavedQuizes/>}></Route>
         </Route>

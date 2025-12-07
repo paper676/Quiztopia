@@ -6,6 +6,10 @@ const UserModel = require("../models/UserModel");
 // const openai = new OpenAI({
 //     apiKey: process.env.OPENAI_API_KEY,
 // });
+//for file
+const PdfParse = require("pdf-parse");
+const mammoth = require("mammoth");
+const fs = require("fs");
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 //Genrate Quizz : api/quiz/generate
@@ -216,3 +220,103 @@ module.exports.savedQuizes = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 }
+
+// Generate Quiz from File :
+module.exports.generateFromFile = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ success: false, message: "No file uploaded" });
+        }
+
+        let extractedText = "";
+        const file = req.file;
+
+        // 1. Handle PDF
+        if (file.mimetype === "application/pdf") {
+            const data = await PdfParse(file.buffer);
+            extractedText = data.text;
+        }
+        // 2. Handle TXT
+        else if (file.mimetype === "text/plain") {
+            extractedText = file.buffer.toString("utf8");
+        }
+        // 3. Handle DOCX
+        else if (file.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+            const result = await mammoth.extractRawText({ buffer: file.buffer });
+            extractedText = result.value;
+        }
+        else {
+            return res.status(400).json({ success: false, message: "Unsupported file type" });
+        }
+
+        // Clean long text
+        extractedText = extractedText.trim().slice(0, 4000);
+
+        if (extractedText.length < 50) {
+            return res.status(400).json({ success: false, message: "File does not contain enough text to generate a quiz." });
+        }
+
+        const prompt = `
+            Read the following content and generate MCQs.
+            Only use information from the text.
+
+            TEXT:
+            ${extractedText}
+
+            Each question must have exactly 4 options and one correct answer.
+            Return in JSON format like this:
+            [
+              {
+                "question": "string",
+                "options": ["A", "B", "C", "D"],
+                "answer": "correct option here"
+              }
+            ]
+        `;
+
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const result = await model.generateContent(prompt);
+
+        let questions = [];
+        let text = result.response.text().trim();
+        text = text.replace(/```json|```/gi, "");
+        questions = JSON.parse(text);
+
+        if (!Array.isArray(questions)) {
+            throw new Error("Invalid Gemini output");
+        }
+
+        const originalName = req.file?.originalname || "UploadedFile";
+        const safeName = originalName.replace(/\s+/g, "_");
+        const topic = `Quiz From ${safeName}_${Date.now()} Uploaded`;
+
+        // Save quiz
+        const quiz = await QuizModel.create({
+            userId: req.user._id,
+            topic,
+            difficulty: "Moderate",
+            questions,
+            startTime: new Date(),
+        });
+
+        req.user.previousQuizzes.push(quiz._id);
+        await req.user.save();
+        
+        const quizToSend = {
+            _id: quiz._id,
+            topic: quiz.topic,
+            difficulty: quiz.difficulty,
+            questions: quiz.questions.map((q) => ({
+                question: q.question,
+                options: q.options,
+            })),
+            createdAt: quiz.createdAt,
+        };
+
+        return res.json({ success: true, quiz: quizToSend })
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: error.message });
+    }
+};

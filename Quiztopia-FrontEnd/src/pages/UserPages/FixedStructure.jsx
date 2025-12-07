@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AppLogo from '../../assets/AppLogo.png'
 import { Outlet } from 'react-router-dom'
-import { CircleUser, SquarePen, LayoutDashboard, History, LogOut, Info, UserRoundPen, Save } from 'lucide-react';
+import { CircleUser, SquarePen, LayoutDashboard, History, LogOut, Info, UserRoundPen, Save, File } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 
 import toast from 'react-hot-toast';
@@ -29,6 +29,7 @@ function FixedStructure() {
     const sidebarLinks = [
         { name: "DashBoard", path: "/user", icon: <LayoutDashboard /> },
         { name: "Create a Quiz", path: "/user/create", icon: <SquarePen /> },
+        { name: "Upload a Doc", path: "/user/upload", icon: <File /> },
         { name: "Privious Quizes", path: "/user/previous", icon: <History /> },
         { name: "Saved Quizes", path: "/user/saved-quizes", icon: <Save /> },
     ];
