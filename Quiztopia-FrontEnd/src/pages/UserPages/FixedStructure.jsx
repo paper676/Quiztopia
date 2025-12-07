@@ -29,7 +29,7 @@ function FixedStructure() {
     const sidebarLinks = [
         { name: "DashBoard", path: "/user", icon: <LayoutDashboard /> },
         { name: "Create a Quiz", path: "/user/create", icon: <SquarePen /> },
-        { name: "Upload a Doc", path: "/user/upload", icon: <File /> },
+        { name: "Upload File", path: "/user/upload", icon: <File /> },
         { name: "Privious Quizes", path: "/user/previous", icon: <History /> },
         { name: "Saved Quizes", path: "/user/saved-quizes", icon: <Save /> },
     ];

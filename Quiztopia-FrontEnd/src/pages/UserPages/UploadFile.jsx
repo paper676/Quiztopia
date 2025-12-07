@@ -105,7 +105,7 @@ function UploadFile() {
     return (
         <div className='w-full no-scrollbar flex-1 h-[89vh] overflow-y-scroll bg-gradient-to-br from-indigo-50 via-white to-purple-50'>
             <div className="px-6 py-10 flex flex-col items-center">
-                <h1 className="text-3xl font-semibold text-gray-800 mb-6">
+                <h1 className="text-3xl font-bold mb-6 text-indigo-900">
                     Generate Quiz From File
                 </h1>
                 <div

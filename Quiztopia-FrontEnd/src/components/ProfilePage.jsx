@@ -158,6 +158,12 @@ function ProfilePage() {
               Saved Quizzes
             </button>
             <button
+              onClick={() => navigate("/user/upload")}
+              className="px-4 text-gray-500 py-2 border border-gray-400 rounded-md hover:border-indigo-200 hover:bg-indigo-200 transition"
+            >
+              Upload File
+            </button>
+            <button
               onClick={() => navigate("/user/create")}
               className="px-4 text-gray-500 py-2 border border-gray-400 rounded-md hover:border-indigo-200 hover:bg-indigo-200 transition"
             >
