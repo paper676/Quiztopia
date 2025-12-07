@@ -37,7 +37,7 @@ module.exports.generate = async (req, res) => {
         //     messages: [{ role: "user", content: prompt }],
         //     temperature: 0.7,
         // });
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const result = await model.generateContent(prompt);
         // console.log(result.response.text());
         let questions = [];
@@ -274,7 +274,7 @@ module.exports.generateFromFile = async (req, res) => {
             ]
         `;
 
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         const result = await model.generateContent(prompt);
 
         let questions = [];
