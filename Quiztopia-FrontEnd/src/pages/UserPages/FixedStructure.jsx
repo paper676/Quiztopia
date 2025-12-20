@@ -67,18 +67,28 @@ function FixedStructure() {
             </div>
             <div className='flex flex-1 h-[89vh] overflow-hidden'>
                 <div className="w-16 md:w-60 border-r border-gray-300 pt-4 flex flex-col shrink-0 transition-all duration-300">
-                    {sidebarLinks.map((item) => (
-                        <NavLink to={item.path} key={item.name} end={item.path === '/user'}
-                            className={({ isActive }) => `flex items-center py-3 px-4 gap-3 
-                                ${isActive ? "border-r-4 md:border-r-[3px] border-radius-5 bg-indigo-500/10 border-indigo-800 text-indigo-900"
-                                    : "hover:bg-gray-100/95 border-white text-gray-700"
-                                }`
-                            }
-                        >
-                            {item.icon}
-                            <p className="md:block hidden text-center font-medium">{item.name}</p>
-                        </NavLink>
-                    ))}
+                    <div className="flex flex-col h-full">
+                        <div>
+                            {sidebarLinks.map((item) => (
+                                <NavLink to={item.path} key={item.name} end={item.path === '/user'}
+                                    className={({ isActive }) => `flex items-center py-3 px-4 gap-3 
+                                        ${isActive ? "border-r-4 md:border-r-[3px] border-radius-5 bg-indigo-500/10 border-indigo-800 text-indigo-900"
+                                            : "hover:bg-gray-100/95 border-white text-gray-700"
+                                        }`
+                                    }
+                                >
+                                    {item.icon}
+                                    <p className="md:block hidden text-center font-medium">{item.name}</p>
+                                </NavLink>
+                            ))}
+                        </div>
+                        <div className="mt-auto px-4 py-3 cursor-pointer text-gray-700 font-medium">
+                            <button onClick={logout} className='flex flex-row items-center hover:text-red-500 hover:cursor-pointer'>
+                                <p className='pr-2'><LogOut size={20}/></p>
+                                <p className="hidden md:block">Logout</p>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div className="flex-1 overflow-auto">
                     <Outlet />
