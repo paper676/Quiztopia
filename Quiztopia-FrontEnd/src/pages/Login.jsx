@@ -34,10 +34,14 @@ function Login() {
     return !user  && (
         <div>
             <div className='w-full pt-10 pl-10'>
-                <div className="flex flex-row items-center">
-                    <Link to='/' className="hover:scale-105 p-1 rounded-full transition hover:bg-zinc-100"><ArrowLeft size={18}/></Link>
-                    <p className='ml-1 text-sm text-black-600'>Home</p>
-                </div>
+                <Link to='/'>
+                    <button className='hover:cursor-pointer p-0 m-0 text-zinc-500 hover:text-zinc-800'>
+                        <div className="flex flex-row items-center">
+                            <ArrowLeft size={18}/>
+                            <p className='ml-1 text-sm text-black-600'>Home</p>
+                        </div>
+                    </button>
+                </Link>
             </div>
             <div className='w-full lg:p-25 md:p-10 sm:p-5 flex justify-center align-center'>
                 <form onSubmit={onSubmitHandler} className="flex flex-col gap-4 m-auto items-start p-8 py-12 w-90 sm:w-[352px] rounded-lg shadow-xl border border-gray-200 bg-white">
