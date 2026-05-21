@@ -56,7 +56,7 @@ function RecentCardDashboard({ quiz }) {
 
       <div className="flex justify-between text-sm text-gray-700">
         <span>Score: {quiz.score}/{quiz.totalQuestions}</span>
-        <span>Time: {quiz.timeTaken}m</span>
+        <span>Time: {Math.ceil(quiz.timeTaken / 60)}m</span>
       </div>
     </div>
   );
