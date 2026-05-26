@@ -257,8 +257,11 @@ module.exports.generateFromFile = async (req, res) => {
         }
 
         const prompt = `
-            Read the following content and generate MCQs.
-            Only use information from the text.
+            Act as an expert educational assessor. Your task is to generate high-quality Multiple Choice Questions (MCQs) based STRICTLY on the provided text.
+            Core Guidelines:
+            1. Strict Grounding: Use ONLY information explicitly stated in the text. Do not include outside knowledge or make assumptions.
+            2. Prioritization: Generate up to a maximum of 30 questions. If the text is lengthy, prioritize the most important core concepts and omit trivial details.
+            3. Quality: Ensure questions are clear, unambiguous, and test meaningful understanding rather than just basic memorization.
 
             TEXT:
             ${extractedText}
